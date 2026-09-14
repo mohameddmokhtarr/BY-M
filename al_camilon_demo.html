@@ -1,0 +1,323 @@
+<title>Al Camilon Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --surface: #161616;
+    --border: #242424;
+    --text: #F0EDE8;
+    --muted: #7A7570;
+    --accent: #C9A96E;
+    --accent-dim: rgba(201,169,110,0.12);
+    --green: #4CAF82;
+    --green-dim: rgba(76,175,130,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #FAF9F7;
+      --surface: #FFFFFF;
+      --border: #E8E5E0;
+      --text: #1A1816;
+      --muted: #8A847C;
+      --accent: #B08A4A;
+      --accent-dim: rgba(176,138,74,0.1);
+      --green: #2E8B5A;
+      --green-dim: rgba(46,139,90,0.1);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #FAF9F7;
+    --surface: #FFFFFF;
+    --border: #E8E5E0;
+    --text: #1A1816;
+    --muted: #8A847C;
+    --accent: #B08A4A;
+    --accent-dim: rgba(176,138,74,0.1);
+    --green: #2E8B5A;
+    --green-dim: rgba(46,139,90,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 64px 24px;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.18;
+    text-wrap: balance;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .lead {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 56px;
+    max-width: 560px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-body {}
+  .step-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .connector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px;
+    height: 0;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .message-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .whatsapp-dot {
+    width: 32px;
+    height: 32px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .message-header-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .message-header-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .message-body {
+    padding: 20px;
+    background: var(--bg);
+  }
+
+  .bubble {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0 10px 10px 10px;
+    padding: 14px 16px;
+    max-width: 340px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  .bubble strong { font-weight: 500; }
+
+  .bubble-time {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    padding-left: 2px;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-dim);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .footer {
+    margin-top: 64px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .live-dot { animation: none; }
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Al Camilon Studio — Live Demo</p>
+  <h1>Instant task updates,<br>straight to WhatsApp.</h1>
+  <p class="lead">Every time a task changes status inside your workspace, a notification fires automatically to your phone — no checking, no delays.</p>
+
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    Active now
+  </div>
+
+  <h2>How it works</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon">📋</div>
+      <div class="step-body">
+        <div class="step-label">A task changes status</div>
+        <div class="step-desc">Someone on your team moves a task — from In Progress to Done, from Backlog to In Review, anything.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">⚡</div>
+      <div class="step-body">
+        <div class="step-label">The system picks it up instantly</div>
+        <div class="step-desc">No scheduled checks. The moment the status changes, the system is notified in real time.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">💬</div>
+      <div class="step-body">
+        <div class="step-label">You get a WhatsApp message</div>
+        <div class="step-desc">A clear message lands on your phone with the task name and its new status — so you always know what moved.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-card">
+    <div class="message-header">
+      <div class="whatsapp-dot">💬</div>
+      <div>
+        <div class="message-header-text">WhatsApp notification</div>
+        <div class="message-header-sub">Example of what you receive</div>
+      </div>
+    </div>
+    <div class="message-body">
+      <div class="bubble">
+        🔔 <strong>Al Camilon Studio</strong><br><br>
+        <strong>Summer Drop — Product Shoot</strong> moved to <strong>Done</strong><br><br>
+        View in workspace →
+      </div>
+      <div class="bubble-time">Just now · Delivered</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    Built for Al Camilon Studio &nbsp;·&nbsp; September 2026
+  </div>
+</div>
